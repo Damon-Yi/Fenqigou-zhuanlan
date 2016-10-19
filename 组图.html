@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>详情页</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/swiper.min.css">
+    <link rel="stylesheet" href="css/pullToRefresh.css">
+    <script src="js/public.js"></script>
+    <script src="js/pullToRefresh.js"></script>
+    <style>
+        .img_news{position: fixed;z-index: 10;top: 0;bottom:0.76rem;width: 100%;background-color: #000;}
+        .img_news>div.swiper-container{width: 100%;height: 100%;}
+        .img_news .img-wrap{position: absolute;top: 0;bottom: 0;width: 100%;display: flex;display: -webkit-flex;align-items: center;-webkit-align-items: center;justify-content: center;-webkit-justify-content: center;}
+        .img_news .img-wrap>img{}
+        .new_info{position: absolute;bottom: 0;width: 100%;background: rgba(0,0,0,.2);font-size: 0.22rem;color: #fff;    padding: 0.2rem;box-sizing: border-box;-webkit-box-sizing: border-box;z-index: 13;}
+        .n_title{font-size: 0.34rem;margin:0 0 0.08rem;}
+        .n_profile{font-size: 0.26rem;}
+        .n_pagination{position: absolute;top: 0.3rem;right: 0.2rem;}
+        .n_pagination .n_pagination_current{font-size: 0.28rem;}
+        .n_pagination .n_pagination_total{}
+
+        .f-operate .f-o-btns{display: none;}
+    </style>
+</head>
+<body>
+    <div class="img_news">
+        <div class="swiper-container">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                    <div class="img-wrap">
+                        <img src="images/s-1.png" class="pic-big-img">
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="img-wrap">
+                        <img src="images/s-2.png" class="pic-big-img">
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="img-wrap">
+                        <img src="images/s-1.png" class="pic-big-img">
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="img-wrap">
+                        <img src="images/s-3.png" class="pic-big-img">
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="img-wrap">
+                        <img src="images/de-5.png" class="pic-big-img">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="new_info">
+            <p class="n_title">习近平抵达平均海拔800米的青海</p>
+            <p class="n_profile">习近平抵达平均海拔800米的青海省海西蒙习近平抵达平均海拔800米的青海省海西蒙习近平抵达平均海拔800米的青海省海西蒙习近平抵达平均海拔800米的青海省海西蒙习近平抵达平均海拔800米的青海省海西蒙习近平抵达平均海拔800米的青海省海西蒙习近平抵达平均海</p>
+            <div class="n_pagination">
+                <span class="n_pagination_current">1</span>/<span class="n_pagination_total">4</span>
+            </div>
+        </div>
+    </div>
+    <div class="f-operate f-operate-show">
+        <ul>
+            <li><img src="images/de-9.png" alt=""></li>
+            <li class="f-o-btns-wrap">
+                <ul class="f-o-btns">
+                    <li>
+                        <div class="t-1"></div>
+                        <p>喜欢</p>
+                    </li>
+                    <li>
+                        <div class="t-2"></div>
+                        <p>不喜欢</p>
+                    </li>
+                    <li>
+                        <div class="t-3"></div>
+                        <p>无感</p>
+                    </li>
+                </ul>
+            </li>
+            <li class="li-share"><img src="images/de-10.png" alt=""></li>
+        </ul>
+    </div>
+    <div class="share-area">
+        <div class="s-mask"></div>
+        <div class="s-cont">
+            <div class="swiper-container share-swiper-1 share-swiper">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <div class="share-item">
+                            <div class="img-wrap"><img src="images/de-12.png" alt=""></div>
+                            <p>微信好友</p>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="share-item">
+                            <div class="img-wrap"><img src="images/de-11.png" alt=""></div>
+                            <p>朋友圈</p>
+                        </div></div>
+                    <div class="swiper-slide">
+                        <div class="share-item">
+                            <div class="img-wrap"><img src="images/de-13.png" alt=""></div>
+                            <p>QQ好友</p>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="share-item">
+                            <div class="img-wrap"><img src="images/de-14.png" alt=""></div>
+                            <p>QQ空间</p>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="share-item">
+                            <div class="img-wrap"><img src="images/de-15.png" alt=""></div>
+                            <p>新浪微博</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="swiper-container share-swiper-2 share-swiper">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <div class="share-item">
+                            <div class="img-wrap"><img src="images/de-16.png" alt=""></div>
+                            <p>收藏</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/comm.js"></script>
+    <script src="js/swiper.min.js"></script>
+    <script>
+        $(function(){
+            var swiper = new Swiper('.img_news>.swiper-container', {
+                slidesPerView: 1,
+                spaceBetween: 0,
+                centeredSlides: true,
+                loop: false,
+                onSlideNextStart: function(swiper){
+                    $('.n_pagination').find(".n_pagination_current").html(swiper.activeIndex+1);
+                },
+                onSlidePrevStart: function(swiper){
+                    $('.n_pagination').find(".n_pagination_current").html(swiper.activeIndex+1);
+                },
+                onInit:function(swiper){
+                    $('.n_pagination').find(".n_pagination_current").html(1);
+                    $('.n_pagination').find(".n_pagination_total").html(swiper.slides.length);
+                },
+                onTouchEnd:function(swiper){
+                    
+                }
+            });
+            //swiper.slideTo($(this).index(), false);
+            
+            var bannerSwiper3 = new Swiper('.swiper-type-3', {
+                autoHeight: true,
+                slidesPerView : '3',
+                spaceBetween : 10
+            });
+        });
+    </script>
+</body>
+</html>

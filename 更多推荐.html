@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>新闻页</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/swiper.min.css">
+    <link rel="stylesheet" href="css/pullToRefresh.css">
+    <script src="js/public.js"></script>
+    <script src="js/pullToRefresh.js"></script>
+    <style>
+        .news .cont{top: 0;}
+    </style>
+    <script src="js/iscroll.js"></script>
+</head>
+<body>
+    <div class="news">
+        <div class="cont" id="cont">
+            <div class="section">
+                <div class="news-items">
+                    <div class="news-item top-line">
+                        <div>
+                            <p class="item-title">习近平抵达平均海拔800米的青海省海西蒙</p>
+                            <p class="item-info">
+                                <span class="user-span">匿名用户</span>
+                                <span class="view-count"><span>206</span>浏览</span>
+                                <span class="item-type">美容</span>
+                            </p>
+                        </div>
+                        <img class="item-img" src="images/d-1.png" alt="">
+                    </div>
+                    <div class="news-item top-line">
+                        <div>
+                            <p class="item-title">习近平抵达平均海拔800米的青海省海西蒙</p>
+                            <p class="item-info">
+                                <span class="user-span">匿名用户</span>
+                                <span class="view-count"><span>206</span>浏览</span>
+                                <span class="item-type">美容</span>
+                            </p>
+                        </div>
+                        <img class="item-img" src="images/d-1.png" alt="">
+                    </div>
+                    <div class="news-item top-line">
+                        <div>
+                            <p class="item-title">习近平抵达平均海拔800米的青海省海西蒙</p>
+                            <p class="item-info">
+                                <span class="user-span">匿名用户</span>
+                                <span class="view-count"><span>206</span>浏览</span>
+                                <span class="item-type">美容</span>
+                            </p>
+                        </div>
+                        <img class="item-img" src="images/d-1.png" alt="">
+                    </div>
+                    <div class="news-item top-line">
+                        <div>
+                            <p class="item-title">习近平抵达平均海拔800米的青海省海西蒙</p>
+                            <p class="item-info">
+                                <span class="user-span">匿名用户</span>
+                                <span class="view-count"><span>206</span>浏览</span>
+                                <span class="item-type">美容</span>
+                            </p>
+                        </div>
+                        <img class="item-img" src="images/d-1.png" alt="">
+                    </div>
+                    <div class="news-item top-line">
+                        <div>
+                            <p class="item-title">习近平抵达平均海拔800米的青海省海西蒙</p>
+                            <p class="item-info">
+                                <span class="user-span">匿名用户</span>
+                                <span class="view-count"><span>206</span>浏览</span>
+                                <span class="item-type">美容</span>
+                            </p>
+                        </div>
+                        <img class="item-img" src="images/d-1.png" alt="">
+                    </div>
+                    <div class="news-item top-line">
+                        <div>
+                            <p class="item-title">习近平抵达平均海拔800米的青海省海西蒙</p>
+                            <p class="item-info">
+                                <span class="user-span">匿名用户</span>
+                                <span class="view-count"><span>206</span>浏览</span>
+                                <span class="item-type">美容</span>
+                            </p>
+                        </div>
+                        <img class="item-img" src="images/d-1.png" alt="">
+                    </div>
+                    <div class="news-item top-line">
+                        <div>
+                            <p class="item-title">习近平抵达平均海拔800米的青海省海西蒙</p>
+                            <p class="item-info">
+                                <span class="user-span">匿名用户</span>
+                                <span class="view-count"><span>206</span>浏览</span>
+                                <span class="item-type">美容</span>
+                            </p>
+                        </div>
+                        <img class="item-img" src="images/d-1.png" alt="">
+                    </div>
+                    <div class="news-item top-line">
+                        <div>
+                            <p class="item-title">习近平抵达平均海拔800米的青海省海西蒙</p>
+                            <p class="item-info">
+                                <span class="user-span">匿名用户</span>
+                                <span class="view-count"><span>206</span>浏览</span>
+                                <span class="item-type">美容</span>
+                            </p>
+                        </div>
+                        <img class="item-img" src="images/d-1.png" alt="">
+                    </div>
+                    <div class="news-item top-line">
+                        <div>
+                            <p class="item-title">习近平抵达平均海拔800米的青海省海西蒙</p>
+                            <p class="item-info">
+                                <span class="user-span">匿名用户</span>
+                                <span class="view-count"><span>206</span>浏览</span>
+                                <span class="item-type">美容</span>
+                            </p>
+                        </div>
+                        <img class="item-img" src="images/d-1.png" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/comm.js"></script>
+    <script src="js/swiper.min.js"></script>
+    <script>
+        $(function(){
+
+            var t_iScroll = refresher.init({
+                id:"cont",
+                pullDownAction:function() {
+                    setTimeout(function () {
+                        console.log('refresh');
+                        t_iScroll.refresh();
+                    }, 1000);
+                },
+                pullUpAction:function Load() {
+                    setTimeout(function () {
+                        console.log('load');
+                        t_iScroll.refresh();
+                    }, 1000);
+                }
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>新闻页</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/swiper.min.css">
+    <link rel="stylesheet" href="css/pullToRefresh.css">
+    <script src="js/public.js"></script>
+    <script src="js/pullToRefresh.js"></script>
+    <link href="css/video-js.css" rel="stylesheet">
+    <script src="js/video.js"></script>
+    <style>
+        body{background-color: #f3f3f3;}
+        .news .header{font-size: 0.32rem;}
+        .news .cont{background-color: #f3f3f3;}
+        .news .cont .section{margin: 0;}
+        .news .cont .section .swiper-type-1{margin: 0;}
+        .news .cont .z-item{background-color: #fff;padding: 0.34rem 0.24rem 0.24rem;margin-bottom: 0.1rem;font-size: 0.18rem;color: #626466;position: relative;}
+        .news .cont .z-item .item-title{color: #040404;font-size: 0.32rem;margin: 0.3rem auto 0.24rem;}
+        .news .cont .z-item .item-info{position: absolute;bottom: 0.2rem;}
+        .news .cont .z-item .user-span{padding-left:0.24rem;position: relative;}
+        .news .cont .z-item .user-span:before{content: '';position: absolute;width: 0.21rem;height: 0.21rem;left: 0;top: 50%;margin-top:-0.12rem;background: url(../images/u-1.png) no-repeat center center;background-size: 100%;}
+        .news .cont .z-item .view-count{margin-left:0.14rem;}
+        .news .cont .z-item .view-count>span{color: #063b70;}
+        .news .cont .z-item .item-type{margin-left:0.24rem;color: #063b70;}
+        .news .cont .z-item .v-num{color: #063b70;}
+        .news .cont .z-item .z-option{overflow: hidden;margin-top: 0.06rem;margin-left: 0.14rem;}
+        .news .cont .z-item .z-option>ul{overflow: auto;float: left;}
+        .news .cont .z-item .z-option>ul>li{float: left;width: 0.5rem;height: 0.4rem;text-align: center;padding-top: 0.1rem;}
+        .news .cont .z-item .z-option>ul>li>img{width: 0.36rem;height: 0.3rem;}
+        .news .cont .z-item .z-option>ul>li>div{width: 0.36rem;height: 0.3rem;}
+        .news .cont .z-item .z-option>ul>li>div{width: 0.36rem;height: 0.3rem;}
+        .news .cont .z-item .z-option>ul>li .t-1{background: url(images/de-6.png) no-repeat center center;background-size: contain;}
+        .news .cont .z-item .z-option>ul>li .t-2{background: url(images/de-7.png) no-repeat center center;background-size: contain;}
+        .news .cont .z-item .z-option>ul>li .t-3{background: url(images/de-8.png) no-repeat center center;background-size: contain;}
+        .news .cont .z-item .z-option>ul>li.on .t-1{background: url(images/de-6-on.png) no-repeat center center;background-size: contain;}
+        .news .cont .z-item .z-option>ul>li.on .t-2{background: url(images/de-7-on.png) no-repeat center center;background-size: contain;}
+        .news .cont .z-item .z-option>ul>li.on .t-3{background: url(images/de-8-on.png) no-repeat center center;background-size: contain;}
+        .news .cont .z-item .z-option .z-share{float: right;width: 0.5rem;height: 0.5rem;}
+        .news .cont .z-item .z-option .z-share>img{width: 0.3rem;height: 0.3rem;margin: 0.1rem;}
+        .news .cont .z-item .vedio{width:5.6rem;height:2.98rem;position: relative;}
+        .news .cont .z-item .vedio:before{content:'';width:1.1rem;height:1.1rem;position: absolute;top: 50%;left: 50%;margin: -0.55rem 0 0 -0.55rem;background: rgba(0,0,0,.5);border-radius: 100%;}
+        .news .cont .z-item .vedio:after{content:'';position: absolute;top: 50%;left: 50%;margin:-0.24rem 0 0 -0.1rem;border-left:0.4rem solid #fff;border-top: 0.24rem solid transparent;border-bottom: 0.24rem solid transparent;}
+        .news .cont .z-item .vedio>img{width:100%;height:100%;}
+        .news .cont .z-item .img-wrap{width:5.6rem;height:2.7rem;}
+        .news .cont .z-item .img-wrap>img{width:100%;height:100%;}
+
+        .video-cont{font-size: 0.24rem;color: #9c9b9b;position:fixed;top: 0;left: 0;bottom: 0;right:0;z-index:6;-webkit-animation: videoDialog .3s ease-out;animation: videoDialog .3s ease-out;display: none;}
+        @-webkit-keyframes videoDialog {
+         from{-webkit-transform: scale(.8);transform: scale(.8);}
+         to{-webkit-transform: scale(1);transform: scale(1);}
+        }
+        @keyframes videoDialog {
+          from{-webkit-transform: scale(.8);transform: scale(.8);}
+          to{-webkit-transform: scale(1);transform: scale(1);}
+        }
+        .video-cont-show{display: block;}
+        .video-cont .v-mask{position:absolute;top: 0;left: 0;bottom: 0;right:0;z-index:1;background-color: rgba(0,0,0,.95);}
+        .video-cont .v-wrap{position: absolute;top: 0;left:0;z-index: 2;right: 0.24rem;left: 0.24rem;bottom: 0;}
+        .video-cont .scroll-wrap{top: 1.4rem;width: 100%;position: absolute;bottom: 0;z-index: 1;-webkit-backface-visibility: hidden;backface-visibility: hidden;-webkit-perspective: 1000;perspective: 1000;-webkit-transform-style: preserve-3d;-webkit-transition-duration: 400ms;}
+        .video-cont .v-line1{padding: 0.44rem 0 0.1rem;position: absolute;width: 100%;top: 0;z-index: 8;background-color: #000;height: 0.52rem;}
+        .video-cont .v-line1 .close-btn{width: 0.52rem;height: 0.52rem;float: left;}
+        .video-cont .v-line1 .v-share-btn{width: 1.1rem;height: 0.44rem;color: #fefefe;border: 1px solid #fefefe;border-radius: 0.06rem;line-height: 0.44rem;text-align: center;float: right;margin: 0.04rem 0 0;}
+        .video-cont .v-line2{overflow: auto;}
+        .video-cont .v-line2 .v-user-icon{width:0.8rem;height: 0.8rem;float: left;margin-right: 0.2rem;}
+        .video-cont .v-line2 .v-user-icon>img{width: 100%;height: 100%;}
+        .video-cont .v-line2 .v-username{font-size: 0.34rem;}
+        .video-cont .v-line2 .v-time{}
+        .video-cont .v-line3{min-height: 2rem;max-height: 5rem;margin: 0.2rem auto;}
+        .video-cont .v-line3>div{width: 100% !important;}
+        .video-cont .v-line3 video{width: 100% !important;}
+
+        video::-webkit-media-controls{display: none !important;;}
+        video::-webkit-media-controls-enclosure {display:none !important;}
+        video::-webkit-media-controls-panel {display: none;}
+        video::-webkit-media-controls-fullscreen-button {display: none;}
+        video::-webkit-media-controls-play-button { display: none;}
+        video::-webkit-media-controls-start-playback-button { display: none;}
+        video::-webkit-media-controls-timeline-container {display: none;}
+        video::-webkit-media-controls-timeline { display: none;}
+        video::-webkit-media-controls-current-time-display{ display: none;}
+        video::-webkit-media-controls-time-remaining-display { display: none;}
+        video::-webkit-media-controls-mute-button { display: none;}
+        video::-webkit-media-controls-toggle-closed-captions-button { display: none;}
+        video::-webkit-media-controls-volume-slider { display: none;}
+        video::-webkit-media-controls-volume-slider-container {display: none;}
+        video::-webkit-media-controls-seek-back-button {display: none;}
+        video::-webkit-media-controls-seek-forward-button {display: none;}
+        video::-webkit-media-controls-picture-in-picture-button {display: none;}
+        video::-webkit-media-controls-rewind-button {display: none;}
+        video::-webkit-media-controls-return-to-realtime-button {display: none;}
+        video::-webkit-full-page-media::-webkit-media-controls-panel {display: none;}
+
+        .video-cont .v-line4{}
+        .video-cont .v-line4 .v-title{font-size: 0.26rem;}
+        .video-cont .v-line4 .v-info{font-size: 0.2rem;}
+        .video-cont .v-line4 .v-info>span{margin-right: 0.2rem;}
+        .video-cont .v-line4 .v-info i{font-style: inherit;}
+        .video-cont .v-line5{display: -webkit-box;display: -webkit-flex;display: -ms-flexbox;display: flex;margin: 0.26rem 0 0.36rem;}
+        .video-cont .v-line5>li{-webkit-box-flex: 1;-webkit-flex: 1;-ms-flex: 1;flex: 1;text-align: center;}
+        .video-cont .v-line5>li>div{width: 0.82rem;height: 0.82rem;display: inline-block;vertical-align: middle;}
+        .video-cont .v-line5>li>span{display: inline-block;vertical-align: middle;font-size: 0.26rem;}
+        .video-cont .v-line5>li .t-1{background: url(../images/de-2.png) no-repeat center center;background-size: contain;}
+        .video-cont .v-line5>li .t-2{background: url(../images/de-3.png) no-repeat center center;background-size: contain;}
+        .video-cont .v-line5>li .t-3{background: url(../images/de-4.png) no-repeat center center;background-size: contain;}
+        .video-cont .v-line5>li.on .t-1{background: url(../images/de-2-on.png) no-repeat center center;background-size: contain;}
+        .video-cont .v-line5>li.on .t-2{background: url(../images/de-3-on.png) no-repeat center center;background-size: contain;}
+        .video-cont .v-line5>li.on .t-3{background: url(../images/de-4-on.png) no-repeat center center;background-size: contain;}
+        .vjs-default-skin .vjs-big-play-button{width: 1.1rem;height: 1.1rem;position: absolute;top: 50%;left: 50%;margin: -0.55rem 0 0 -0.55rem;background: rgba(0,0,0,.5);border-radius: 100%;border: none;}
+        .vjs-default-skin .vjs-big-play-button:before{content:'';position: absolute;top: 50%;left: 50%;margin:-0.24rem 0 0 -0.1rem;border-left:0.4rem solid #fff;border-top: 0.24rem solid transparent;border-bottom: 0.24rem solid transparent;height: auto;width: auto;}
+        .vjs-default-skin .vjs-mute-control{}
+        .vjs-default-skin .vjs-progress-control{height: 4px;top: -4px;}
+        .vjs-default-skin .vjs-seek-handle{width: 12px;height: 12px;background-color: #fff;border-radius: 100%;top: -4px;}
+        .vjs-default-skin .vjs-slider-handle:before{display: none;}
+        .vjs-default-skin .vjs-volume-bar .vjs-volume-handle{display: none;}
+        .vjs-default-skin .vjs-volume-bar{height: 4px;}
+        .vjs-default-skin .vjs-volume-level{height: 4px;}
+        .vjs-default-skin .vjs-play-progress{background-color: #d1d1d1;border-radius: 10px;}
+        .vjs-default-skin .vjs-load-progress{background-color: #808080;border-radius: 10px;}
+        .vjs-default-skin .vjs-volume-level{background-color: #d1d1d1;border-radius: 10px;}
+        .vjs-default-skin .vjs-time-controls {font-size: 1.2em;line-height: 2.6em;width: auto;}
+        .vjs-time-divider{font-size: 1.2em;margin: 0 0.36em;line-height: 2.6em; }
+        .vjs-default-skin.vjs-show-control-bar .vjs-control-bar {display: block;visibility: visible;opacity: 1;-webkit-transition: visibility .1s,opacity .1s;-moz-transition: visibility .1s,opacity .1s;-o-transition: visibility .1s,opacity .1s;transition: visibility .1s,opacity .1s;}
+    </style>
+    <script src="js/iscroll.js"></script>
+</head>
+<body>
+    <div class="news">
+        <div class="header"><span class="back-btn"></span>幽默专栏</div>
+        <div class="cont" id="cont">
+            <div>
+                <div class="section">
+                    <div class="swiper-margin-bottom padding_top_bottom">
+                        <img src="images/s-3.png" alt="">
+                        <p class="daoyu">在访谈环节，王健林说的一句话却意外走红。他在讲述了。</p>
+                    </div>
+                </div>
+                <div class="z-item">
+                    <p class=""><span class="user-span">匿名用户</span></p>
+                    <p class="item-title">习近平抵达平均海拔800米的青海省海西蒙习近平抵达平均海拔800米的青海省海西蒙习近平抵达平均海拔800米的青海省海西蒙...</p>
+                    <p><span class="view-count"><span class="v-num">206</span>浏览</span></p>
+                    <div class="z-option">
+                        <ul>
+                            <li>
+                                <div class="t-1"></div>
+                            </li>
+                            <li>
+                                <div class="t-2"></div>
+                            </li>
+                            <li>
+                                <div class="t-3"></div>
+                            </li>
+                        </ul>
+                        <div class="z-share"><img src="images/de-10.png" alt=""></div>
+                    </div>
+                </div>
+                <div class="z-item">
+                    <p class=""><span class="user-span">匿名用户</span></p>
+                    <p class="item-title">习近平抵达平均海拔800米的青海省海西蒙习近平抵达平均海拔800米的青海省海西蒙习近平抵达平均海拔800米的青海省海西蒙...</p>
+                    <p><span class="view-count"><span class="v-num">206</span>浏览</span></p>
+                    <div class="z-option">
+                        <ul>
+                            <li>
+                                <div class="t-1"></div>
+                            </li>
+                            <li>
+                                <div class="t-2"></div>
+                            </li>
+                            <li>
+                                <div class="t-3"></div>
+                            </li>
+                        </ul>
+                        <div class="z-share"><img src="images/de-10.png" alt=""></div>
+                    </div>
+                </div>
+                <div class="z-item">
+                    <p class=""><span class="user-span">匿名用户</span></p>
+                    <p class="item-title">习近平抵达平均海拔800米的青海省海西蒙习近平抵达平均海拔800米的</p>
+                    <div class="vedio">
+                        <img src="images/vedio.png" alt="">
+                    </div>
+                    <p><span class="view-count"><span class="v-num">206</span>浏览</span></p>
+                    <div class="z-option">
+                        <ul>
+                            <li>
+                                <div class="t-1"></div>
+                            </li>
+                            <li>
+                                <div class="t-2"></div>
+                            </li>
+                            <li>
+                                <div class="t-3"></div>
+                            </li>
+                        </ul>
+                        <div class="z-share"><img src="images/de-10.png" alt=""></div>
+                    </div>
+                </div>
+                <div class="z-item">
+                    <p class=""><span class="user-span">匿名用户</span></p>
+                    <p class="item-title">习近平抵达平均海拔800米的青海省海西蒙习近平抵达平均海拔800米的青海省海西蒙习近平抵达平均海拔800米的青海省海西蒙...</p>
+                    <p><span class="view-count"><span class="v-num">206</span>浏览</span></p>
+                    <div class="z-option">
+                        <ul>
+                            <li>
+                                <div class="t-1"></div>
+                            </li>
+                            <li>
+                                <div class="t-2"></div>
+                            </li>
+                            <li>
+                                <div class="t-3"></div>
+                            </li>
+                        </ul>
+                        <div class="z-share"><img src="images/de-10.png" alt=""></div>
+                    </div>
+                </div>
+                <div class="z-item">
+                    <p class=""><span class="user-span">匿名用户</span></p>
+                    <p class="item-title">习近平抵达平均海拔800米的青海省海西蒙习近平抵达平均海拔800米的青海省海西蒙习近平抵达平均海拔800米的青海省海西蒙...</p>
+                    <div class="img-wrap">
+                        <img src="images/news-img.png" alt="">
+                    </div>
+                    <p><span class="view-count"><span class="v-num">206</span>浏览</span></p>
+                    <div class="z-option">
+                        <ul>
+                            <li>
+                                <div class="t-1"></div>
+                            </li>
+                            <li>
+                                <div class="t-2"></div>
+                            </li>
+                            <li>
+                                <div class="t-3"></div>
+                            </li>
+                        </ul>
+                        <div class="z-share"><img src="images/de-10.png" alt=""></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--div class="footer">
+            <a class="weui_tabbar_item weui_bar_item_on" href="javascript:;">
+                <div class="weui_tabbar_icon">
+                    <img alt="" src="images/f-1.png">
+                </div>
+                <p class="weui_tabbar_label">我的</p>
+            </a>
+            <a class="weui_tabbar_item" href="javascript:;">
+                <div class="weui_tabbar_icon">
+                    <img alt="" src="images/f-2.png">
+                </div>
+                <p class="weui_tabbar_label">分期</p>
+            </a>
+            <a class="weui_tabbar_item" href="javascript:;">
+                <div class="weui_tabbar_icon">
+                    <img alt="" src="images/f-3.png">
+                </div>
+                <p class="weui_tabbar_label">发现</p>
+            </a>
+        </div-->
+    </div>
+    <div class="share-area">
+        <div class="s-mask"></div>
+        <div class="s-cont">
+            <div class="swiper-container share-swiper-1 share-swiper">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <div class="share-item">
+                            <div class="img-wrap"><img src="images/de-12.png" alt=""></div>
+                            <p>微信好友</p>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="share-item">
+                            <div class="img-wrap"><img src="images/de-11.png" alt=""></div>
+                            <p>朋友圈</p>
+                        </div></div>
+                    <div class="swiper-slide">
+                        <div class="share-item">
+                            <div class="img-wrap"><img src="images/de-13.png" alt=""></div>
+                            <p>QQ好友</p>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="share-item">
+                            <div class="img-wrap"><img src="images/de-14.png" alt=""></div>
+                            <p>QQ空间</p>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="share-item">
+                            <div class="img-wrap"><img src="images/de-15.png" alt=""></div>
+                            <p>新浪微博</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="swiper-container share-swiper-2 share-swiper">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <div class="share-item">
+                            <div class="img-wrap"><img src="images/de-16.png" alt=""></div>
+                            <p>收藏</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="video-cont">
+        <div class="v-mask"></div>
+        <div class="v-wrap">
+            <div class="v-line1">
+                <img class="close-btn" src="images/v-3.png" alt="">
+                <div class="v-share-btn">分享</div>
+            </div>
+            <div class="scroll-wrap">
+                <div>
+                    <div class="v-line2">
+                        <div class="v-user-icon"><img src="images/v-1.png" alt=""></div>
+                        <div>
+                            <p class="v-username">云大霄</p>
+                            <p class="v-time">今天08:30</p>
+                        </div>
+                    </div>
+                    <div class="v-line3">
+                        <video id="video_1" class="video-js vjs-default-skin" controls preload="auto" poster="" data-setup='' height="200" width="100%">
+                            <source src="images/5219.mp4" type='video/mp4' />
+                        </video>
+                    </div>
+                    <div class="v-line4">
+                        <p class="v-title">菲总统替渔民求情</p>
+                        <p class="v-info"><span>浏览<i class="v-view">10.2万</i></span><span>喜欢<i class="v-like">5.12万</i></span></p>
+                    </div>
+                    <ul  class="c-o-btns v-line5">
+                        <li>
+                            <div class="t-1 "></div><span>喜欢</span>
+                        </li>
+                        <li>
+                            <div class="t-2"></div><span>不喜欢</span>
+                        </li>
+                        <li>
+                            <div class="t-3"></div><span>无感</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/comm.js"></script>
+    <script src="js/swiper.min.js"></script>
+    <script>
+        $(function(){
+
+            var t_iScroll = refresher.init({
+                id:"cont",
+                pullDownAction:function() {
+                    setTimeout(function () {
+                        console.log('refresh');
+                        t_iScroll.refresh();
+                    }, 1000);
+                },
+                pullUpAction:function Load() {
+                    setTimeout(function () {
+                        console.log('load');
+                        t_iScroll.refresh();
+                    }, 1000);
+                }
+            });
+
+            var bannerSwiper1 = new Swiper('.swiper-type-1', {
+                autoHeight: true
+            });
+            var bannerSwiper2 = new Swiper('.swiper-type-2', {
+                autoHeight: true,
+                slidesPerView : 'auto',
+                spaceBetween : 20
+            });
+            var bannerSwiper3 = new Swiper('.swiper-type-3', {
+                autoHeight: true,
+                slidesPerView : '3',
+                spaceBetween : 20
+            });
+            $('.z-option>ul>li').on('click',function(){
+                var _that = $(this);
+                _that.siblings().removeClass('on');
+                _that.toggleClass('on');
+                _that.addClass('a-bouncein');
+                setTimeout(function(){
+                    _that.removeClass('a-bouncein');
+                },1000);
+            });
+            /*分享操作*/
+            $('.z-option .z-share').on('click',function(){
+                $('.share-area .s-cont').addClass('s-cont-show');
+                $('.share-area .s-mask').addClass('s-mask-show');
+            });
+            $('.share-area .s-mask').on('click',function(){
+                $('.share-area .s-cont').removeClass('s-cont-show');
+                $('.share-area .s-mask').removeClass('s-mask-show');
+            });
+            var share1Swiper = new Swiper('.share-swiper-1', {
+                freeMode : true,
+                slidesPerView : 'auto',
+                onClick: function(swiper){
+                }
+            });
+            var share2Swiper = new Swiper('.share-swiper-2', {
+                freeMode : true,
+                slidesPerView : 'auto',
+                onClick: function(swiper){
+                }
+            });
+            document.onscroll = function(){
+                /*隐藏分享*/
+               $('.share-area .s-cont').removeClass('s-cont-show');
+               $('.share-area .s-mask').removeClass('s-mask-show');
+            }
+
+            //视频
+            var video;
+            $('.vedio').on('click',function(){
+
+                var u = navigator.userAgent;
+                var isAndroid = u.indexOf('Android') > -1 || u.indexOf('Adr') > -1; //android终端
+                var isiOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
+                
+                if(isAndroid){
+                    window.androidVideo.startPlayVideo('http://10.80.2.157:8093/images/5219.mp4');
+                }else if(isiOS){
+                    window.webkit.messageHandlers.AppModel.postMessage('http://10.80.2.157:8093/images/5219.mp4');
+                }
+
+                // $('.video-cont').addClass('video-cont-show');
+                // // var video = $('.video-cont .v-line3>video')[0];
+                // video = videojs("video_1");
+                // //video.play();
+                
+                // // 检测播放时间
+                // video.on('timeupdate', function () {  
+                //   //console.log('当前播放时间：'+video.currentTime());
+                // });
+                // // 开始或恢复播放
+                // video.on('play', function() {  
+                // });
+                // // 暂停播放
+                // video.on('pause', function() {  
+                // });
+                // video.on('ended', function() {
+                //     // if(this.isFullscreen()){//播放结束，退出全屏
+                //     //     this.exitFullscreen();
+                //     // }
+                //     this.exitFullscreen();
+                //     console.log(this.exitFullscreen);
+                // });
+                // $(video.b).addClass('vjs-show-control-bar');
+                // //videoScroll.refresh();
+            });
+            $('.video-cont .close-btn').on('click',function(){
+                $('.video-cont').removeClass('video-cont-show');
+                var video = videojs("video_1");
+                video.pause();
+            });
+            $('.video-cont .v-share-btn').on('click',function(){
+                $('.share-area .s-cont').addClass('s-cont-show');
+                $('.share-area .s-mask').addClass('s-mask-show');
+            });
+            /*态度*/
+            $('.video-cont .v-line5>li').on('click',function(){
+                var parentLi = $(this);
+                var a_div = $(this).children('div');
+                a_div.addClass('a-bouncein');
+                parentLi.siblings().removeClass('on');
+                parentLi.toggleClass('on');
+                setTimeout(function(){
+                    a_div.removeClass('a-bouncein');
+                },1000);
+            });
+        });
+    </script>
+</body>
+</html>

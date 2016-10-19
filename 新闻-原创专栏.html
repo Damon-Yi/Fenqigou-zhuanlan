@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>新闻页</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/swiper.min.css">
+    <link rel="stylesheet" href="css/pullToRefresh.css">
+    <script src="js/public.js"></script>
+    <script src="js/pullToRefresh.js"></script>
+    <style>
+        .news .header{font-size: 0.32rem;}
+    </style>
+    <script src="js/iscroll.js"></script>
+</head>
+<body>
+    <div class="news">
+        <div class="header"><span class="back-btn"></span>原创专栏</div>
+        <div class="cont" id="cont">
+            <div class="section">
+                <div class="bottom-line swiper-margin-bottom padding_top_bottom">
+                    <img src="images/s-3.png" alt="">
+                    <p class="daoyu">导语：在访谈环节，王健林说的一句话却意外走红。他在讲述了。</p>
+                </div>
+                <div class="type-title"><span>往期回顾</span><a href="#"></a></div>
+                <div class="news-items">
+                    <div class="news-item">
+                        <div>
+                            <p class="item-title">习近平抵达平均海拔800米的青海省海西蒙</p>
+                            <p class="item-info">
+                                <span class="user-span">匿名用户</span>
+                                <span class="view-count"><span>206</span>浏览</span>
+                                <span class="item-type">美容</span>
+                            </p>
+                        </div>
+                        <img class="item-img" src="images/d-2.png" alt="">
+                    </div>
+                    <div class="news-item top-line">
+                        <div>
+                            <p class="item-title">习近平抵达平均海拔800米的青海省海西蒙</p>
+                            <p class="item-info">
+                                <span class="user-span">匿名用户</span>
+                                <span class="view-count"><span>206</span>浏览</span>
+                                <span class="item-type">美容</span>
+                            </p>
+                        </div>
+                        <img class="item-img" src="images/d-2.png" alt="">
+                    </div>
+                    <div class="news-item top-line">
+                        <div>
+                            <p class="item-title">习近平抵达平均海拔800米的青海省海西蒙</p>
+                            <p class="item-info">
+                                <span class="user-span">匿名用户</span>
+                                <span class="view-count"><span>206</span>浏览</span>
+                                <span class="item-type">美容</span>
+                            </p>
+                        </div>
+                        <img class="item-img" src="images/d-2.png" alt="">
+                    </div>
+                    <div class="news-item top-line">
+                        <div>
+                            <p class="item-title">习近平抵达平均海拔800米的青海省海西蒙</p>
+                            <p class="item-info">
+                                <span class="user-span">匿名用户</span>
+                                <span class="view-count"><span>206</span>浏览</span>
+                                <span class="item-type">美容</span>
+                            </p>
+                        </div>
+                        <img class="item-img" src="images/d-2.png" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--div class="footer">
+            <a class="weui_tabbar_item weui_bar_item_on" href="javascript:;">
+                <div class="weui_tabbar_icon">
+                    <img alt="" src="images/f-1.png">
+                </div>
+                <p class="weui_tabbar_label">我的</p>
+            </a>
+            <a class="weui_tabbar_item" href="javascript:;">
+                <div class="weui_tabbar_icon">
+                    <img alt="" src="images/f-2.png">
+                </div>
+                <p class="weui_tabbar_label">分期</p>
+            </a>
+            <a class="weui_tabbar_item" href="javascript:;">
+                <div class="weui_tabbar_icon">
+                    <img alt="" src="images/f-3.png">
+                </div>
+                <p class="weui_tabbar_label">发现</p>
+            </a>
+        </div-->
+    </div>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/comm.js"></script>
+    <script src="js/swiper.min.js"></script>
+    <script>
+        $(function(){
+            var t_iScroll = refresher.init({
+                id:"cont",
+                pullDownAction:function() {
+                    setTimeout(function () {
+                        console.log('refresh');
+                        t_iScroll.refresh();
+                    }, 1000);
+                },
+                pullUpAction:function Load() {
+                    setTimeout(function () {
+                        console.log('load');
+                        t_iScroll.refresh();
+                    }, 1000);
+                }
+            });
+
+            var bannerSwiper1 = new Swiper('.swiper-type-1', {
+                autoHeight: true
+            });
+            var bannerSwiper2 = new Swiper('.swiper-type-2', {
+                autoHeight: true,
+                slidesPerView : 'auto',
+                spaceBetween : 20
+            });
+            var bannerSwiper3 = new Swiper('.swiper-type-3', {
+                autoHeight: true,
+                slidesPerView : '3',
+                spaceBetween : 20
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>新闻页</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/swiper.min.css">
+    <link rel="stylesheet" href="css/pullToRefresh.css">
+    <script src="js/public.js"></script>
+    <script src="js/pullToRefresh.js"></script>
+    <style>
+        body{background-color: #ededed;}
+        .news .cont{top: 0.2rem;background-color: #fff;bottom: 0.76rem;}
+        .news .cont .section{padding: 0;}
+        .game-items{}
+        .game-item{display: flex;-webkit-display: flex;align-items: center;-webkit-align-items: center;justify-content: center;-webkit-justify-content: center;padding: 0.28rem 0.2rem;position: relative;}
+        .game-item .g_num{font-size: 0.36rem;color: #969696;}
+        .game-item .g_icon{width: 0.9rem;height: 0.9rem;margin: 0 0.24rem 0 0.16rem;}
+        .game-item .g_title{font-size: 0.26rem;color: #3f3f3f;flex: 1;-webkit-flex: 1;margin: 0 0.4rem 0 0;}
+        .game-item .g_download{font-size: 0.2rem;color: #3f3f3f;width: 1.24rem;height: 0.58rem;border:1px solid #d5d5d5;border-radius: 3px;text-align: center;line-height: 0.58rem;}
+
+        .f-operate .f-o-btns{display: none;}
+    </style>
+    <script src="js/iscroll.js"></script>
+</head>
+<body>
+    <div class="news">
+        <div class="cont" id="cont">
+            <div class="section">
+                <div class="game-items">
+                    <div class="game-item top-line">
+                        <span class="g_num">1</span>
+                        <img class="g_icon" src="images/g-1.png" alt="">
+                        <span class="g_title">街球联盟-纯粹接头自由篮球自由篮...</span>
+                        <a  class="g_download" href="javascript:;">下载</a>
+                    </div>
+                    <div class="game-item top-line">
+                        <span class="g_num">1</span>
+                        <img class="g_icon" src="images/g-1.png" alt="">
+                        <span class="g_title">街球联盟-纯粹接头自由篮球自由篮...</span>
+                        <a  class="g_download" href="javascript:;">下载</a>
+                    </div>
+                    <div class="game-item top-line">
+                        <span class="g_num">1</span>
+                        <img class="g_icon" src="images/g-1.png" alt="">
+                        <span class="g_title">街球联盟-纯粹接头自由篮球自由篮...</span>
+                        <a  class="g_download" href="javascript:;">下载</a>
+                    </div>
+                    <div class="game-item top-line">
+                        <span class="g_num">1</span>
+                        <img class="g_icon" src="images/g-1.png" alt="">
+                        <span class="g_title">街球联盟-纯粹接头自由篮球自由篮...</span>
+                        <a  class="g_download" href="javascript:;">下载</a>
+                    </div>
+                    <div class="game-item top-line">
+                        <span class="g_num">1</span>
+                        <img class="g_icon" src="images/g-1.png" alt="">
+                        <span class="g_title">街球联盟-纯粹接头自由篮球自由篮...</span>
+                        <a  class="g_download" href="javascript:;">下载</a>
+                    </div>
+                    <div class="game-item top-line">
+                        <span class="g_num">1</span>
+                        <img class="g_icon" src="images/g-1.png" alt="">
+                        <span class="g_title">街球联盟-纯粹接头自由篮球自由篮...</span>
+                        <a  class="g_download" href="javascript:;">下载</a>
+                    </div>
+                    <div class="game-item top-line">
+                        <span class="g_num">1</span>
+                        <img class="g_icon" src="images/g-1.png" alt="">
+                        <span class="g_title">街球联盟-纯粹接头自由篮球自由篮...</span>
+                        <a  class="g_download" href="javascript:;">下载</a>
+                    </div>
+                    <div class="game-item top-line">
+                        <span class="g_num">1</span>
+                        <img class="g_icon" src="images/g-1.png" alt="">
+                        <span class="g_title">街球联盟-纯粹接头自由篮球自由篮...</span>
+                        <a  class="g_download" href="javascript:;">下载</a>
+                    </div>
+                    <div class="game-item top-line">
+                        <span class="g_num">1</span>
+                        <img class="g_icon" src="images/g-1.png" alt="">
+                        <span class="g_title">街球联盟-纯粹接头自由篮球自由篮...</span>
+                        <a  class="g_download" href="javascript:;">下载</a>
+                    </div>
+                    <div class="game-item top-line">
+                        <span class="g_num">1</span>
+                        <img class="g_icon" src="images/g-1.png" alt="">
+                        <span class="g_title">街球联盟-纯粹接头自由篮球自由篮...</span>
+                        <a  class="g_download" href="javascript:;">下载</a>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="f-operate f-operate-show">
+        <ul>
+            <li><img src="images/de-9.png" alt=""></li>
+            <li class="f-o-btns-wrap">
+                <ul class="f-o-btns">
+                    <li>
+                        <div class="t-1"></div>
+                        <p>喜欢</p>
+                    </li>
+                    <li>
+                        <div class="t-2"></div>
+                        <p>不喜欢</p>
+                    </li>
+                    <li>
+                        <div class="t-3"></div>
+                        <p>无感</p>
+                    </li>
+                </ul>
+            </li>
+            <li class="li-share"><img src="images/de-10.png" alt=""></li>
+        </ul>
+    </div>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/comm.js"></script>
+    <script src="js/swiper.min.js"></script>
+    <script>
+        $(function(){
+
+            var t_iScroll = refresher.init({
+                id:"cont",
+                pullDownAction:function() {
+                    setTimeout(function () {
+                        console.log('refresh');
+                        t_iScroll.refresh();
+                    }, 1000);
+                },
+                pullUpAction:function Load() {
+                    setTimeout(function () {
+                        console.log('load');
+                        t_iScroll.refresh();
+                    }, 1000);
+                }
+            });
+        });
+    </script>
+</body>
+</html>

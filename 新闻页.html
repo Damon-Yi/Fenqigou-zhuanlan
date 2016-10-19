@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>新闻页</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/swiper.min.css">
+    <link rel="stylesheet" href="css/pullToRefresh.css">
+    <script src="js/public.js"></script>
+    <script src="js/pullToRefresh.js"></script>
+    <style>
+        .swiper-pagination{font-size: 0;bottom: 3px !important;}
+        .swiper-pagination-bullet-active{background-color: #4f5d73;}
+
+        .choose_inter{font-size: 0.24rem;color:#646464;position: fixed;top: 0;bottom: 0;left: 0;right: 0;background-color: #fff;z-index: 3;text-align: center;display: none;}
+        .choose_inter_show{display: block;}
+        .choose_inter .c_cont{width:100%;z-index: 1;-webkit-backface-visibility: hidden;backface-visibility: hidden;-webkit-perspective: 1000;perspective: 1000;-webkit-transform-style: preserve-3d;transform-style: preserve-3d;-webkit-transition-duration: 400ms;transition-duration: 400ms;position: absolute;top: 0;bottom:2rem;left:0;overflow: hidden;}
+        .choose_inter .c_cont>div{padding-bottom:0.4rem;}
+        .choose_inter .c_cont .c_title{font-size: 0.3rem;margin: 0.34rem auto 0.1rem;}
+        .choose_inter .c_cont .c_sub_title{margin-bottom: 0.54rem;}
+        .choose_inter .c_cont .c_items{overflow: auto;}
+        .choose_inter .c_cont .c_item{width: 33.33%;float: left;}
+        .choose_inter .c_cont .c_item>span{width:1.5rem;height: 0.6rem;display: block;margin: 0.2rem auto;line-height: 0.6rem;color: #746e6e;border: 1px solid #b4b4b4;font-size: 0.28rem;border-radius: 0.1rem;}
+        .choose_inter .c_cont .c_item>span.active{color: #fff;border: 1px solid #ec403c;background-color:#ec403c;}
+        .choose_inter .c_bottom{position: absolute;bottom: 0;width: 100%;height: 2rem;box-shadow: 0 0 10px 1px #eee;}
+        .choose_inter .c_bottom .c_ok{width: 2.9rem;height: 0.64rem;line-height: 0.64rem;background-color: #f9b106;color: #fff;margin: 0.46rem auto 0.2rem;border-radius: 1rem;font-size: 0.28rem;}
+        .choose_inter .c_bottom .c_skip{font-size: 0.22rem;color: #746e6e;}
+    </style>
+    <script src="js/iscroll.js"></script>
+</head>
+<body>
+    <div class="news">
+        <div class="header">以下文章由小编为您推荐，不喜欢点击右边<span class="plus-btn"></span></div>
+        <div class="cont" id="cont">
+            <div>
+                <div class="section">
+                    <div class="swiper-type-0">
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide"><img src="images/s-1.png" alt=""></div>
+                            <div class="swiper-slide"><img src="images/s-1.png" alt=""></div>
+                            <div class="swiper-slide"><img src="images/s-1.png" alt=""></div>
+                        </div>
+                        <div class="swiper-pagination"></div>
+                    </div>
+                    <div class="news-items">
+                        <div class="news-item top-line">
+                            <div>
+                                <p class="item-title">习近平抵达平均海拔800米的青海省海西蒙</p>
+                                <p class="item-info">
+                                    <span class="user-span">匿名用户</span>
+                                    <span class="view-count"><span>206</span>浏览</span>
+                                    <span class="item-type">美容</span>
+                                </p>
+                            </div>
+                            <img class="item-img" src="images/d-1.png" alt="">
+                        </div>
+                        <div class="news-item top-line">
+                            <div>
+                                <p class="item-title">习近平抵达平均海拔800米的青海省海西蒙</p>
+                                <p class="item-info">
+                                    <span class="user-span">匿名用户</span>
+                                    <span class="view-count"><span>206</span>浏览</span>
+                                    <span class="item-type">美容</span>
+                                </p>
+                            </div>
+                            <img class="item-img" src="images/d-1.png" alt="">
+                        </div>
+                        <div class="news-item top-line">
+                            <div>
+                                <p class="item-title">习近平抵达平均海拔800米的青海省海西蒙</p>
+                                <p class="item-info">
+                                    <span class="user-span">匿名用户</span>
+                                    <span class="view-count"><span>206</span>浏览</span>
+                                    <span class="item-type">美容</span>
+                                </p>
+                            </div>
+                            <img class="item-img" src="images/d-1.png" alt="">
+                        </div>
+                        <div class="news-item top-line">
+                            <div>
+                                <p class="item-title">习近平抵达平均海拔800米的青海省海西蒙</p>
+                                <p class="item-info">
+                                    <span class="user-span">匿名用户</span>
+                                    <span class="view-count"><span>206</span>浏览</span>
+                                    <span class="item-type">美容</span>
+                                </p>
+                            </div>
+                            <img class="item-img" src="images/d-1.png" alt="">
+                        </div>
+                        <div class="news-item top-line">
+                            <div>
+                                <p class="item-title">习近平抵达平均海拔800米的青海省海西蒙</p>
+                                <p class="item-info">
+                                    <span class="user-span">匿名用户</span>
+                                    <span class="view-count"><span>206</span>浏览</span>
+                                    <span class="item-type">美容</span>
+                                </p>
+                            </div>
+                            <img class="item-img" src="images/d-1.png" alt="">
+                        </div>
+                    </div>
+                </div>
+                <div class="section">
+                    <div class="type-title"><span>新发现</span><a href="#">更多</a></div>
+                    <div class="swiper-type-2">
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide"><img src="images/s-2.png" alt=""></div>
+                            <div class="swiper-slide"><img src="images/s-2.png" alt=""></div>
+                        </div>
+                    </div>
+                    <div class="news-items">
+                        <div class="news-item top-line">
+                            <div>
+                                <p class="item-title">习近平抵达平均海拔800米的青海省海西蒙</p>
+                                <p class="item-info">
+                                    <span class="user-span">匿名用户</span>
+                                    <span class="view-count"><span>206</span>浏览</span>
+                                    <span class="item-type">美容</span>
+                                </p>
+                            </div>
+                            <img class="item-img" src="images/d-2.png" alt="">
+                        </div>
+                        <div class="news-item top-line">
+                            <div>
+                                <p class="item-title">习近平抵达平均海拔800米的青海省海西蒙</p>
+                                <p class="item-info">
+                                    <span class="user-span">匿名用户</span>
+                                    <span class="view-count"><span>206</span>浏览</span>
+                                    <span class="item-type">美容</span>
+                                </p>
+                            </div>
+                            <img class="item-img" src="images/d-2.png" alt="">
+                        </div>
+                    </div>
+                </div>
+                <div class="section">
+                    <div class="type-title"><span>原创专栏</span></div>
+                    <div class="bottom-line swiper-margin-bottom">
+                        <p class="banner-title">习近平抵达平均海拔800米的青海省</p>
+                        <img src="images/s-3.png" alt="">
+                        <!--div class="swiper-wrapper">
+                            <div class="swiper-slide"><img src="images/s-3.png" alt=""></div>
+                            <div class="swiper-slide"><img src="images/s-3.png" alt=""></div>
+                            <div class="swiper-slide"><img src="images/s-3.png" alt=""></div>
+                        </div-->
+                    </div>
+                    <div class="type-title"><span>看世界</span><a href="#">更多</a></div>
+                    <div class="news-items">
+                        <div class="news-item">
+                            <div>
+                                <p class="item-title">习近平抵达平均海拔800米的青海省海西蒙</p>
+                                <p class="item-info">
+                                    <span class="user-span">匿名用户</span>
+                                    <span class="view-count"><span>206</span>浏览</span>
+                                    <span class="item-type">美容</span>
+                                </p>
+                            </div>
+                            <img class="item-img" src="images/d-2.png" alt="">
+                        </div>
+                        <div class="news-item top-line">
+                            <div>
+                                <p class="item-title">习近平抵达平均海拔800米的青海省海西蒙</p>
+                                <p class="item-info">
+                                    <span class="user-span">匿名用户</span>
+                                    <span class="view-count"><span>206</span>浏览</span>
+                                    <span class="item-type">美容</span>
+                                </p>
+                            </div>
+                            <img class="item-img" src="images/d-2.png" alt="">
+                        </div>
+                        <div class="news-item top-line">
+                            <div>
+                                <p class="item-title">习近平抵达平均海拔800米的青海省海西蒙</p>
+                                <p class="item-info">
+                                    <span class="user-span">匿名用户</span>
+                                    <span class="view-count"><span>206</span>浏览</span>
+                                    <span class="item-type">美容</span>
+                                </p>
+                            </div>
+                            <img class="item-img" src="images/d-2.png" alt="">
+                        </div>
+                    </div>
+                </div>
+                <div class="section">
+                    <div class="type-title"><span>幽默专栏</span></div>
+                    <div class="bottom-line swiper-margin-bottom">
+                        <p class="banner-title">习近平抵达平均海拔800米的青海省</p>
+                        <img src="images/s-3.png" alt="">
+                        <!--div class="swiper-wrapper">
+                            <div class="swiper-slide"><img src="images/s-3.png" alt=""></div>
+                            <div class="swiper-slide"><img src="images/s-3.png" alt=""></div>
+                            <div class="swiper-slide"><img src="images/s-3.png" alt=""></div>
+                        </div-->
+                    </div>
+                    <div class="type-title"><span>情感汇</span><a href="#">更多</a></div>
+                    <div class="news-items">
+                        <div class="news-item">
+                            <div>
+                                <p class="item-title">习近平抵达平均海拔800米的青海省海西蒙</p>
+                                <p class="item-info">
+                                    <span class="user-span">匿名用户</span>
+                                    <span class="view-count"><span>206</span>浏览</span>
+                                    <span class="item-type">美容</span>
+                                </p>
+                            </div>
+                            <img class="item-img" src="images/d-2.png" alt="">
+                        </div>
+                        <div class="news-item top-line">
+                            <div>
+                                <p class="item-title">习近平抵达平均海拔800米的青海省海西蒙</p>
+                                <p class="item-info">
+                                    <span class="user-span">匿名用户</span>
+                                    <span class="view-count"><span>206</span>浏览</span>
+                                    <span class="item-type">美容</span>
+                                </p>
+                            </div>
+                            <img class="item-img" src="images/d-2.png" alt="">
+                        </div>
+                        <div class="news-item top-line">
+                            <div>
+                                <p class="item-title">习近平抵达平均海拔800米的青海省海西蒙</p>
+                                <p class="item-info">
+                                    <span class="user-span">匿名用户</span>
+                                    <span class="view-count"><span>206</span>浏览</span>
+                                    <span class="item-type">美容</span>
+                                </p>
+                            </div>
+                            <img class="item-img" src="images/d-2.png" alt="">
+                        </div>
+                    </div>
+                </div>
+                <div class="section">
+                    <div class="type-title"><span>爱自己</span><a href="#">更多</a></div>
+                    <div class="swiper-type-3 bottom-line">
+                        <p class="banner-title">习近平抵达平均海拔800米的青海省</p>
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide"><img src="images/s-4.png" alt=""></div>
+                            <div class="swiper-slide"><img src="images/s-4.png" alt=""></div>
+                            <div class="swiper-slide"><img src="images/s-4.png" alt=""></div>
+                        </div>
+                        <div class="s-info"><span class="s-souce">转载出处</span><span class="view-count"><span>206</span>浏览</span><span class="item-type">美容</span></div>
+                    </div>
+                    <div class="news-items">
+                        <div class="news-item">
+                            <div>
+                                <p class="item-title">习近平抵达平均海拔800米的青海省海西蒙</p>
+                                <p class="item-info">
+                                    <span class="user-span">匿名用户</span>
+                                    <span class="view-count"><span>206</span>浏览</span>
+                                    <span class="item-type">美容</span>
+                                </p>
+                            </div>
+                            <img class="item-img" src="images/d-2.png" alt="">
+                        </div>
+                        <div class="news-item top-line">
+                            <div>
+                                <p class="item-title">习近平抵达平均海拔800米的青海省海西蒙</p>
+                                <p class="item-info">
+                                    <span class="user-span">匿名用户</span>
+                                    <span class="view-count"><span>206</span>浏览</span>
+                                    <span class="item-type">美容</span>
+                                </p>
+                            </div>
+                            <img class="item-img" src="images/d-2.png" alt="">
+                        </div>
+                        <div class="news-item top-line">
+                            <div>
+                                <p class="item-title">习近平抵达平均海拔800米的青海省海西蒙</p>
+                                <p class="item-info">
+                                    <span class="user-span">匿名用户</span>
+                                    <span class="view-count"><span>206</span>浏览</span>
+                                    <span class="item-type">美容</span>
+                                </p>
+                            </div>
+                            <img class="item-img" src="images/d-2.png" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="choose_inter">
+            <div class="c_cont" id="c_cont">
+                <div>
+                    <p class="c_title">选择你感兴趣的内容</p>
+                    <p class="c_sub_title">请至少选3个哦</p>
+                    <div class="c_items">
+                        <div class="c_item"><span data-val='6'>热点</span></div>
+                        <div class="c_item"><span data-val='6'>娱乐</span></div>
+                        <div class="c_item"><span data-val='6'>视频</span></div>
+                        <div class="c_item"><span data-val='6'>游戏</span></div>
+                        <div class="c_item"><span data-val='6'>科技</span></div>
+                        <div class="c_item"><span data-val='6'>数码</span></div>
+                        <div class="c_item"><span data-val='6'>情感</span></div>
+                        <div class="c_item"><span data-val='6'>幽默</span></div>
+                        <div class="c_item"><span data-val='6'>趣闻</span></div>
+                        <div class="c_item"><span data-val='6'>理财</span></div>
+                        <div class="c_item"><span data-val='6'>旅游</span></div>
+                        <div class="c_item"><span data-val='6'>时尚</span></div>
+                        <div class="c_item"><span data-val='6'>星座</span></div>
+                        <div class="c_item"><span data-val='6'>瘦身</span></div>
+                        <div class="c_item"><span data-val='6'>健康</span></div>
+
+                        <div class="c_item"><span data-val='6'>时尚</span></div>
+                        <div class="c_item"><span data-val='6'>星座</span></div>
+                        <div class="c_item"><span data-val='6'>瘦身</span></div>
+                        <div class="c_item"><span data-val='6'>健康</span></div>
+                        <div class="c_item"><span data-val='6'>时尚</span></div>
+                        <div class="c_item"><span data-val='6'>星座</span></div>
+                        <div class="c_item"><span data-val='6'>瘦身</span></div>
+                        <div class="c_item"><span data-val='6'>健康</span></div>
+                    </div> 
+                </div>
+            </div>
+            <div class="c_bottom">
+                <div class="c_ok">选好啦</div>
+                <a class="c_skip" href="javascript:;">跳过此页</a>
+            </div>
+        </div>
+        <!--div class="footer">
+            <a class="weui_tabbar_item weui_bar_item_on" href="javascript:;">
+                <div class="weui_tabbar_icon">
+                    <img alt="" src="images/f-1.png">
+                </div>
+                <p class="weui_tabbar_label">我的</p>
+            </a>
+            <a class="weui_tabbar_item" href="javascript:;">
+                <div class="weui_tabbar_icon">
+                    <img alt="" src="images/f-2.png">
+                </div>
+                <p class="weui_tabbar_label">分期</p>
+            </a>
+            <a class="weui_tabbar_item" href="javascript:;">
+                <div class="weui_tabbar_icon">
+                    <img alt="" src="images/f-3.png">
+                </div>
+                <p class="weui_tabbar_label">发现</p>
+            </a>
+        </div-->
+    </div>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/comm.js"></script>
+    <script src="js/swiper.min.js"></script>
+    <script>
+        $(function(){
+
+            var t_iScroll = refresher.init({
+                id:"cont",
+                pullDownAction:function() {
+                    setTimeout(function () {
+                        console.log('refresh');
+                        t_iScroll.refresh();
+                    }, 1000);
+                },
+                pullUpAction:function Load() {
+                    setTimeout(function () {
+                        console.log('load');
+                        t_iScroll.refresh();
+                    }, 1000);
+                }
+            });
+
+            var bannerSwiper0 = new Swiper('.swiper-type-0', {
+                autoHeight: true,
+                pagination: '.swiper-pagination'
+            });
+            var bannerSwiper1 = new Swiper('.swiper-type-1', {
+                autoHeight: true
+            });
+            var bannerSwiper2 = new Swiper('.swiper-type-2', {
+                autoHeight: true,
+                autoplay : 3000,
+                loop : true,
+                slidesPerView : 'auto',
+                spaceBetween : 20
+            });
+            var bannerSwiper3 = new Swiper('.swiper-type-3', {
+                autoHeight: true,
+                slidesPerView : '3',
+                spaceBetween : 20
+            });
+            /*选择兴趣*/
+            $('.plus-btn').on('click',function(){
+                var dialogScroll = new iScroll('c_cont', {
+                    useTransition: true,
+                    vScrollbar: false, 
+                });
+                $('.choose_inter').addClass('choose_inter_show');
+                dialogScroll.refresh();
+            });
+            $('.choose_inter .c_item>span').on('click',function(){
+                $(this).toggleClass('active');
+            });
+            //选号了
+            $('.choose_inter .c_ok').on('click',function(){
+                $('.choose_inter').removeClass('choose_inter_show');
+                /*已选择兴趣*/
+                var interSelected = [];
+                $('.choose_inter .c_item .active').each(function(){
+                    var item = {};
+                    item.id = $(this).attr('data-val');
+                    item.name = $(this).text();
+                    interSelected.push(item);
+                });
+                console.log(interSelected);
+            });
+            //跳过
+            $('.choose_inter .c_skip').on('click',function(){
+                $('.choose_inter').removeClass('choose_inter_show');
+            });
+        });
+    </script>
+</body>
+</html>
