@@ -202,6 +202,9 @@
                 onScrollMove: function () {
                     //滑动,底部效果
                     bottomBtnhandle();
+                },
+                onScrollEnd:function(){
+                    t_iScroll.refresh();
                 }
             });
 
