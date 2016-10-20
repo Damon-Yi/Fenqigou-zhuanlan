@@ -26,6 +26,8 @@
         .choose_inter .c_bottom{position: absolute;bottom: 0;width: 100%;height: 2rem;box-shadow: 0 0 10px 1px #eee;}
         .choose_inter .c_bottom .c_ok{width: 2.9rem;height: 0.64rem;line-height: 0.64rem;background-color: #f9b106;color: #fff;margin: 0.46rem auto 0.2rem;border-radius: 1rem;font-size: 0.28rem;}
         .choose_inter .c_bottom .c_skip{font-size: 0.22rem;color: #746e6e;}
+
+        #pullUp{display: none !important;}
     </style>
     <script src="js/iscroll.js"></script>
 </head>
@@ -353,10 +355,10 @@
                     }, 1000);
                 },
                 pullUpAction:function Load() {
-                    setTimeout(function () {
-                        console.log('load');
-                        t_iScroll.refresh();
-                    }, 1000);
+                    // setTimeout(function () {
+                    //     console.log('load');
+                    //     t_iScroll.refresh();
+                    // }, 1000);
                 }
             });
 
