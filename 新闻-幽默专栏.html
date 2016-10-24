@@ -429,9 +429,9 @@
                 var isiOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
                 
                 if(isAndroid){
-                    window.androidVideo.startPlayVideo('http://10.80.2.157:8093/images/5219.mp4');
+                    window.androidVideo.startPlayVideo('http://10.80.2.137:8093/images/5219.mp4');
                 }else if(isiOS){
-                    window.webkit.messageHandlers.AppModel.postMessage('http://10.80.2.157:8093/images/5219.mp4');
+                    window.webkit.messageHandlers.AppModel.postMessage('http://10.80.2.137:8093/images/5219.mp4');
                 }
 
                 // $('.video-cont').addClass('video-cont-show');
