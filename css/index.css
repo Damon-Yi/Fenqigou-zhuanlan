@@ -10,7 +10,7 @@ a {color: #606060;text-decoration: none;}
 a:hover {text-decoration: none;}
 input:- webkit-autofill { -webkit-box-shadow: 0 0 0 1000px white inset; } 
 select{color:#333;}
-img,video{max-width: 100% !important;}
+img,video{max-width: 100% !important;height: auto;display: block;margin:0 auto;}
 @media screen and (-webkit-min-device-pixel-ratio:0) {
  .lbBox{letter-spacing:-5px !important}
  .lbBox * *{letter-spacing:normal}
