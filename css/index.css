@@ -1,16 +1,18 @@
 /* CSS Document */
 @charset "utf-8";
-*{margin: 0;padding: 0; list-style:none; border:0px; outline:none;-webkit-tap-highlight-color:transparent;}
+*{margin: 0;padding: 0; list-style:none; border:0px; outline:none;-webkit-tap-highlight-color:transparent;font-family:'华文细黑' !important; }
 html {
     /* 禁用iPhone中Safari的字号自动调整 */
     -webkit-text-size-adjust: 100%;-ms-text-size-adjust: 100%;font-size: 62.5%;height:100%;
 }
-body{font-size:100%; color:#333; background-color:#fff; font-family:'华文细黑','microsoft yahei','Arial', 'Helvetica', 'sans-serif';margin:0 auto;overflow-x:hidden; }
+body{font-size:100%; color:#333; background-color:#fff; margin:0 auto;overflow-x:hidden; }
 a {color: #606060;text-decoration: none;}
 a:hover {text-decoration: none;}
 input:- webkit-autofill { -webkit-box-shadow: 0 0 0 1000px white inset; } 
 select{color:#333;}
 img,video{max-width: 100% !important;height: auto;display: block;margin:0 auto;}
+.post_content *{font-size: 0.32rem !important;}
+.post_content img {margin: 0 auto;height: auto;display: block;max-width: 100% !important;}
 @media screen and (-webkit-min-device-pixel-ratio:0) {
  .lbBox{letter-spacing:-5px !important}
  .lbBox * *{letter-spacing:normal}
@@ -98,7 +100,7 @@ img,video{max-width: 100% !important;height: auto;display: block;margin:0 auto;}
 .detail-page .cont:after{content: " ";position: absolute;left: 0;bottom: 0;width: 100%;height: 1px;border-bottom: 1px solid #eae9e9;-webkit-transform-origin: 0 100%;transform-origin: 0 100%;-webkit-transform: scaleY(0.5);transform: scaleY(0.5);}
 .detail-page .cont .title{position: relative;margin-bottom: 0.5rem;}
 .detail-page .cont .title .t-main{color: #252525;font-size: 0.38rem;font-weight: bold;}
-.detail-page .cont .title .t-sub{color: #888181;font-size: 0.18rem;margin-top: 0.16rem;}
+.detail-page .cont .title .t-sub{color: #888181;font-size: 0.2rem;margin-top: 0.16rem;}
 .detail-page .cont .title .t-sub .t-time{margin-left:0.14rem;}
 .detail-page .cont .title .t-share{position: absolute;padding: 0.06rem 0.18rem;color: #fff;background-color:#5f6e86;right:0;bottom:-0.1rem;border-radius: 0.2rem;}
 .detail-page .cont .main-txt{color: #646464;font-size: 0.32rem;margin-top: 0.5rem;}
