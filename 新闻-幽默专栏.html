@@ -431,7 +431,11 @@
                 if(isAndroid){
                     window.androidVideo.startPlayVideo('http://10.80.2.137:8093/images/5219.mp4');
                 }else if(isiOS){
-                    window.webkit.messageHandlers.AppModel.postMessage('http://10.80.2.137:8093/images/5219.mp4');
+                    //window.webkit.messageHandlers.AppModel.postMessage('http://10.80.2.137:8093/images/5219.mp4');
+                    window.webkit.messageHandlers.AppModel.postMessage({
+                        param:'http://10.80.2.137:8093/images/5219.mp4',
+                        type:1
+                    });
                 }
 
                 // $('.video-cont').addClass('video-cont-show');
