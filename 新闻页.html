@@ -39,9 +39,9 @@
                 <div class="section">
                     <div class="swiper-type-0">
                         <div class="swiper-wrapper">
-                            <div class="swiper-slide"><img src="images/s-1.png" alt=""></div>
-                            <div class="swiper-slide"><img src="images/s-1.png" alt=""></div>
-                            <div class="swiper-slide"><img src="images/s-1.png" alt=""></div>
+                            <div class="swiper-slide"><a href="javascript:;" class="swiper-link" data-src="http://www.baidu.com"><img src="images/s-1.png" alt=""></a></div>
+                            <div class="swiper-slide"><a href="javascript:;" class="swiper-link" data-src="http://www.baidu.com"><img src="images/s-1.png" alt=""></a></div>
+                            <div class="swiper-slide"><a href="javascript:;" class="swiper-link" data-src="http://www.baidu.com"><img src="images/s-1.png" alt=""></a></div>
                         </div>
                         <div class="swiper-pagination"></div>
                     </div>
@@ -364,7 +364,12 @@
 
             var bannerSwiper0 = new Swiper('.swiper-type-0', {
                 autoHeight: true,
-                pagination: '.swiper-pagination'
+                pagination: '.swiper-pagination',
+                onClick:function(){
+                    var link = $(bannerSwiper0.clickedSlide).find('.swiper-link');
+                    console.log(link.attr('data-src'));
+                    window.location.href = link.attr('data-src');
+                }
             });
             var bannerSwiper1 = new Swiper('.swiper-type-1', {
                 autoHeight: true
