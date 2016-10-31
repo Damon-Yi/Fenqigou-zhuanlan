@@ -35,38 +35,51 @@ $(function(){
     
     /*态度*/
     $('.c-o-btns .a-wrap').on('click',function(){
-        var parentLi = $(this).parent();
-        var a_div = $(this).children('div');
-        parentLi.siblings().removeClass('on');
-        parentLi.toggleClass('on');
-        a_div.addClass('a-bouncein');
-        setTimeout(function(){
-            a_div.removeClass('a-bouncein');
-        },1000);
-        //底部“态度”
-        var bottomLi = $($('.f-o-btns>li').get(parentLi.index()));
-        bottomLi.siblings().removeClass('on');
-        bottomLi.toggleClass('on');
+        dosth('middle',this,'msg','id');
     });
     $('.f-o-btns>li').on('click',function(){
-        var _that = $(this);
-        _that.siblings().removeClass('on');
-        _that.toggleClass('on');
-        _that.addClass('a-bouncein');
-        setTimeout(function(){
-            _that.removeClass('a-bouncein');
-        },1000);
-        //内容中间“态度”
-        var a_parentLi = $($('.c-o-btns>li').get($(this).index()));
-        var a_div = a_parentLi.find('.a-wrap').children('div');
-        a_parentLi.siblings().removeClass('on');
-        a_parentLi.toggleClass('on');
-        a_div.addClass('a-bouncein');
-        setTimeout(function(){
-            a_div.removeClass('a-bouncein');
-        },1000);
+        dosth('bottom',this,'msg','id');
     });
 });
+function dosth(type,obj,msg,id){
+    
+    if(type=='middle'){
+        var parentLi = $(obj).parent();
+        var a_div = $(obj).children('div');
+        if($('.c-o-btns>li.on').length==0){
+            parentLi.addClass('on');
+            a_div.addClass('a-bouncein');
+            setTimeout(function(){
+                a_div.removeClass('a-bouncein');
+            },1000);
+            //底部“态度”
+            var bottomLi = $($('.f-o-btns>li').get(parentLi.index()));
+            bottomLi.siblings().removeClass('on');
+            bottomLi.toggleClass('on'); 
+        }
+    }
+
+    if(type=='bottom'){
+        var _that = $(obj);
+        if($('.f-o-btns>li.on').length==0){
+            _that.addClass('on');
+            _that.addClass('a-bouncein');
+            setTimeout(function(){
+                _that.removeClass('a-bouncein');
+            },1000);
+            //内容中间“态度”
+            var a_parentLi = $($('.c-o-btns>li').get($(obj).index()));
+            var a_div = a_parentLi.find('.a-wrap').children('div');
+            a_parentLi.siblings().removeClass('on');
+            a_parentLi.toggleClass('on');
+            a_div.addClass('a-bouncein');
+            setTimeout(function(){
+                a_div.removeClass('a-bouncein');
+            },1000);
+        }
+    }
+
+}
 //滑动,底部效果
 var bottomBtnhandle = function(){
     var scrollTop=document.documentElement.scrollTop||document.body.scrollTop;
