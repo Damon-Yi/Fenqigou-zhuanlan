@@ -124,6 +124,11 @@
         .vjs-default-skin .vjs-time-controls {font-size: 1.2em;line-height: 2.6em;width: auto;}
         .vjs-time-divider{font-size: 1.2em;margin: 0 0.36em;line-height: 2.6em; }
         .vjs-default-skin.vjs-show-control-bar .vjs-control-bar {display: block;visibility: visible;opacity: 1;-webkit-transition: visibility .1s,opacity .1s;-moz-transition: visibility .1s,opacity .1s;-o-transition: visibility .1s,opacity .1s;transition: visibility .1s,opacity .1s;}
+
+        /*提示*/
+        .tips {position: fixed;top: 45%;left: 50%;transform: translate(-50%, -50%);background: rgba(0, 0, 0, .7);padding: 10px 15px;z-index: 20;font-size: 15px;color: #fff;border-radius: 3px;width:236px;word-break: break-all;display: none;text-align: left;line-height: 30px;}
+        .tips_show {display: block;}
+
     </style>
     <script src="js/iscroll.js"></script>
 </head>
@@ -425,7 +430,8 @@
                $('.share-area .s-cont').removeClass('s-cont-show');
                $('.share-area .s-mask').removeClass('s-mask-show');
             }
-
+            //tips('亲~ 去AppStore更新升级，精彩视频等你来看~',150000);
+            //tips('亲~ 去应用宝、豌豆荚更新升级，精彩视频等你来看~',150000);
             //视频
             var video;
             $('.vedio').on('click',function(){
@@ -435,13 +441,21 @@
                 var isiOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
                 
                 if(isAndroid){
-                    window.androidVideo.startPlayVideo('25+9');
+                    if(u.indexOf('android_find') > -1){
+                        window.androidVideo.startPlayVideo('25+9'); 
+                    }else{
+                        tips('亲~ 去AppStore更新升级，精彩视频等你来看~',1500);
+                    }
                 }else if(isiOS){
                     //window.webkit.messageHandlers.AppModel.postMessage('http://10.80.2.137:8093/images/5219.mp4');
-                    window.webkit.messageHandlers.AppModel.postMessage({
-                        param:'http://10.80.2.137:8093/images/5219.mp4',
-                        type:1
-                    });
+                    if(u.indexOf('iOS_find') > -1){
+                        window.webkit.messageHandlers.AppModel.postMessage({
+                            param:'http://10.80.2.137:8093/images/5219.mp4',
+                            type:1
+                        });
+                    }else{
+                        tips('亲~ 去应用宝、豌豆荚更新升级，精彩视频等你来看~',1500);
+                    }
                 }
 
                 // $('.video-cont').addClass('video-cont-show');
@@ -490,6 +504,16 @@
                 },1000);
             });
         });
+
+        /*提示，弹窗*/
+        function tips(msg,time){
+            var tipsDiv = $('<div class="tips"></div>');
+            $('body').append(tipsDiv);
+            tipsDiv.html(msg).addClass('tips_show');
+            setTimeout(function(){
+                tipsDiv.removeClass('tips_show').remove();
+            },time);
+        } 
     </script>
 </body>
 </html>
